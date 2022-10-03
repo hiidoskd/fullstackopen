@@ -51,7 +51,7 @@ const App = () => {
 						setPersons(persons.map(person => person.id !== returnedPerson.id ? person : newPerson))
           })
           .catch (error => {
-            setErrorMessage(`Person '${found.name}' was already removed from server`)
+            setErrorMessage(`Person '${found.name}' was already removed from server or it is not formatted correctly`)
             setTimeout(() => {
               setErrorMessage(null)
             }, 3000)
@@ -71,7 +71,7 @@ const App = () => {
 					setNewNumber('')
 			})
       .catch( error => {
-        setErrorMessage(error.message)
+        setErrorMessage(error.response.data.error)
         setTimeout(() => {
           setErrorMessage(null)
         }, 3000)
