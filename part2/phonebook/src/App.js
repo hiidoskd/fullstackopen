@@ -40,12 +40,11 @@ const App = () => {
 
   const handleFormSubmit = (event) => {
     event.preventDefault()
-    const newPerson = {name: newName, number: newNumber, id: persons.length + 1}
+    const newPerson = {name: newName, number: newNumber}
     
     const found = persons.find(person => person.name === newName)
     if (found) {
       if(window.confirm(`${newName} is already in the list\nDo you want to change the number?`)) {
-				newPerson.id = found.id
 				contactService
 					.update(found.id, newPerson)
           .then(returnedPerson => {
@@ -71,6 +70,14 @@ const App = () => {
 					setNewName('')
 					setNewNumber('')
 			})
+      .catch( error => {
+        setErrorMessage(error.message)
+        setTimeout(() => {
+          setErrorMessage(null)
+        }, 3000)
+					setNewName('')
+					setNewNumber('')
+      })
     }
   }
 
