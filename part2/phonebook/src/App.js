@@ -94,9 +94,18 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
-      <Notification message={successMessage} class="success" />
-      <Notification message={errorMessage} class="error" />
-      <Filter searchName={searchName} handleSearchChange={handleSearchChange} />
+      <Notification
+        message={successMessage}
+        class="success"
+      />
+      <Notification
+        message={errorMessage}
+        class="error"
+      />
+      <Filter
+        searchName={searchName}
+        handleSearchChange={handleSearchChange}
+      />
       <h2>Add new contact</h2>
       <Form
         handleFormSubmit={handleFormSubmit}
